@@ -35,7 +35,7 @@ def insert_data_to_db():
 
 with DAG(
     default_args=default_args,
-    dag_id='traffic dag',
+    dag_id='traffic_dag',
     description='Read csv, extract, and put to postgres',
     start_date=datetime(2024, 4, 30),
     schedule_interval='@daily'
