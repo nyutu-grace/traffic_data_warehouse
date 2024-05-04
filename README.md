@@ -9,7 +9,6 @@ The data warehouse take into account future needs, organise data such that a num
 
 
 ## Objectives
-
 Building data warehouse techstack
 - Consisting of
     
@@ -17,8 +16,11 @@ Building data warehouse techstack
     - An orchestration service (Airflow)
     - An ELT tool (dbt)
     - A reporting environment (redash)
-- Set it up locally using 
-    - Fully dockerized 
+    - Fully dockerized
+
+## Screenshot
+![Screenshot 2024-05-04 115241](https://github.com/nyutu-grace/traffic_data_warehouse/assets/135698958/a1a00025-b9a1-4d1a-8045-d2da21a72a50)
+
 
 ##  Dataset
 - [Data(pNEUMA dataset )](https://open-traffic.epfl.ch/index.php/downloads/#1599047632450-ebe509c8-1330)

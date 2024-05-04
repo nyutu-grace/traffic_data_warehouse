@@ -1,6 +1,6 @@
 from datetime import timedelta, datetime
 
-from airflow import DAG
+from airflow import DAG 
 from airflow.operators.python_operator import PythonOperator
 import pandas as pd
 from scripts.dataloader import DataLoader
@@ -16,10 +16,10 @@ def read_data():
     """csv data reading
     """
     dl = DataLoader()
-    headers, rows = dl.read_csv('/opt/airflow/data/20181024_d1_0900_0930.csv')
+    headers, rows = dl.read_csv('../data/traffic.csv')
     vehicles, trajectories = dl.data_to_dataframe(headers, rows)
-    vehicles.to_csv('/opt/airflow/data/vehicles.csv', index=False)
-    trajectories.to_csv('/opt/airflow/data/trajectories.csv',index=False)
+    vehicles.to_csv('../data/vehicles.csv', index=False)
+    trajectories.to_csv('../data/trajectories.csv',index=False)
 
 def create_table():
     con = Connection()
@@ -28,8 +28,8 @@ def create_table():
 def insert_data_to_db():
     """Insert data to db"""
     con = Connection()
-    vehicles = pd.read_csv('/opt/airflow/data/vehicles.csv')
-    trajectories = pd.read_csv('/opt/airflow/data/trajectories.csv')
+    vehicles = pd.read_csv('../data/vehicles.csv')
+    trajectories = pd.read_csv('../data/trajectories.csv')
     con.df_to_sql('vehicles', vehicles)
     con.df_to_sql('trajectories', trajectories)
 
@@ -52,3 +52,5 @@ with DAG(
         task_id='insert_data_to_db',
         python_callable=insert_data_to_db
     )
+    
+data_reader>>table_creator>>insert_data    

@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: data_model
+    description: "All data model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: vehicle_dist model
+    description: "Distance aggregates for each vehicle type"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
