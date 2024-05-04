@@ -65,7 +65,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: traffic
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     ports:
@@ -115,7 +115,7 @@ services:
         REDASH_WEB_WORKERS: 4
         REDASH_LOG_LEVEL: "INFO"
         REDASH_REDIS_URL: "redis://redis:6379/0"
-        REDASH_DATABASE_URL: "postgresql://username:password@postgres/database_name"
+        REDASH_DATABASE_URL: "postgresql://postgres:postgres@postgres/traffic"
         REDASH_COOKIE_SECRET: e27ff2c68906e45ad2567281f29509f0103de5748d8aa28c65e2823d728f
       volumes:
         - redash_data:/redash/data
